@@ -6,12 +6,12 @@ int main()
 {
     setlocale(LC_ALL, "Portuguese");
     int opcao;
-
+    
     do
     {
         menu();
         scanf("%d", &opcao);
-
+        printf("Hello World");
         switch(opcao)
         {
             case 1: cadastro_cliente();
@@ -25,7 +25,7 @@ int main()
             case 5: puts("SALVANDO DADOS...");
                     Sleep(1000);
                     break;
-            default: puts("OP«√O INV¡LIDA!");
+            default: puts("OP√á√ÉO INV√ÅLIDA!");
             Sleep(2000);
         }
     }while(opcao != 5);
