@@ -28,7 +28,6 @@ void cadastro_cliente()
         getchar();
         puts("NOME DO CLIENTE: ");
         scanf("%[^\n]s", &cliente.nome);
-        printf("%s", cliente.nome);
 
         getchar();
         puts("\nDATA DE NASCIMNETO: ");
