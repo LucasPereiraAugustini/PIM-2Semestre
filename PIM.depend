@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1668533901 source:d:\lucas\pim\main.c
+	<stdio.h>
+	<locale.h>
+	"modulos.h"
+
+1668218164 d:\lucas\pim\modulos.h
+
+1668535077 source:d:\lucas\pim\modulos.c
+	<stdio.h>
+	<locale.h>
+	"modulos.h"
+
