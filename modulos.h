@@ -3,7 +3,7 @@
 
 typedef struct
 {
-    char nome[50];
+    char nome[30];
     char nascimento[11];
     char cpf[15];
     char telefone[18];
@@ -12,7 +12,7 @@ typedef struct
 
 typedef struct
 {
-    char nome[50];
+    char nome[30];
     char nascimento[11];
     char cpf[15];
     char telefone[18];
@@ -20,9 +20,24 @@ typedef struct
     char data_ingresso[11];
 }FUNCIONARIO;
 
-void menu();
-void cadastro_funcinario();
+typedef struct
+{
+    char nome[30];
+    char categoria[15];
+    float preco;
+}PRODUTO;
+
+void tela_de_login();
+void menu_inicial();
+void menu_relatorios();
+void cadastro_cliente(int opcao);
+void cadastro_funcinario(int opcao);
+void cadastro_produto(int opcao);
+void salvar_cliente(CLIENTE cliente);
 void salvar_funcionario(FUNCIONARIO funcionario);
-void mostrar_funcionario();
+void salvar_produto(PRODUTO produto);
+void exibir_clientes();
+void exibir_funcionarios();
+void exibir_produtos();
 
 #endif // MODULOS_H_INCLUDED

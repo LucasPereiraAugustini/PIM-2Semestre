@@ -2,24 +2,66 @@
 #include<locale.h>
 #include"modulos.h"
 
-void menu()
+void tela_de_login()
+{
+    char login[15] = "admin", senha[16] = "admin", login1[15], senha1[16];
+    int login_efetuado = 0;
+
+    while(!login_efetuado)
+    {
+        system("cls");
+        puts("-=-=-=-=-=-=- TELA DE LOGIN -=-=-=-=-=-=-");
+        puts("NOME DE USUÁRIO: ");
+        scanf("%s", login1);
+
+        puts("\nSENHA: ");
+        scanf("%s", senha1);
+        puts("-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=--=-=-");
+
+        if (strcmp(login, login1) == 0 && strcmp(senha, senha1) == 0)
+        {
+            puts("\nLOGADO! ENTRANDO NO SISTEMA EM INSTANTES...\n\n");
+            Sleep (1500);
+            login_efetuado = 1;
+        }else
+        {
+            puts("\nUSUÁRIO OU SENHA INCORRETOS! TENTE NOVAMENTE EM INSTANES.\n\n");
+            Sleep (1500);
+        }
+    }
+}
+
+
+void menu_inicial() // FUNÇÃO PRA EXIBIR O MENU INICIAL DE OPÇÕES.
 {
     system("cls");
     puts("-=-=-=-=-=- SISTEMA DE GESTÃO -=-=-=-=-=-");
     puts("[1] - CADASTRAR CLIENTE");
-    puts("[2] - MOSTRAR CLIENTES CADASTRADOS");
-    puts("[3] - CADASTRAR FUNCIONÁRIO");
-    puts("[4] - MOSTRAR FUNCINÁRIOS CADASTRADOS");
+    puts("[2] - CADASTRAR FUNCIONÁRIO");
+    puts("[3] - CADASTRAR PRODUTOS");
+    puts("[4] - RELATÓRIOS");
     puts("[5] - SAIR");
-    puts("-=-=-=-=-=--=-=-=-=-=--=-=-=-=-=--=-=-=-=-");
+    puts("-=-=-=-=-=--=-=-=-=-=--=-=-=-=-=-=-=-=-=-");
     puts("ESOLHA UMA OPÇÃO: ");
 }
 
-// FUNÇÃO PARA CADASTRAR CLIENTES E SALVAR OS DADOS.
-void cadastro_cliente()
+
+void menu_relatorios() // FUNÇÃO PARA EXIBIR O MENU DE RELATÓRIOS.
+{
+    system("cls");
+    puts("-=-=-=-=-=-=-=-=- RELATÓRIOS -=-=-=-=-=-=-=-=-");
+    puts("[1] - EXIBIR CLIENTES CADASTRADOS");
+    puts("[2] - EXIBIR FUNCINÁRIOS CADASTRADOS");
+    puts("[3] - EXIBIR PRODUTOS CADASTRADOS");
+    puts("[4] - VOLTAR");
+    puts("-=-=-=-=-=--=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-");
+    puts("ESOLHA UMA OPÇÃO: ");
+}
+
+
+void cadastro_cliente(int opcao) // FUNÇÃO PARA CADASTRAR CLIENTES E SALVAR OS DADOS.
 {
     CLIENTE cliente;
-    int opcao;
 
     do
     {
@@ -45,7 +87,7 @@ void cadastro_cliente()
         puts("\nCIDADE ONDE MORA: ");
         scanf("%[^\n]s", &cliente.cidade);
 
-        salvar_cliente(cliente);
+        salvar_cliente(cliente); // DEPOIS DE CADASTRADO OS DADOS JÁ SÃO SALVOS IMEDIATAMENTE.
 
         puts("\nDESEJA CONTINUAR? [1 - SIM/ 2 - NÃO]");
         scanf("%d", &opcao);
@@ -53,8 +95,8 @@ void cadastro_cliente()
     }while(opcao == 1);
 }
 
-// FUNÇÃO QUE RECEBE UMA VARIÁVEL DO TIPO CLIENTE E SALVA OS DADOS EM UM ARQUIVO TXT.
-void salvar_cliente(CLIENTE cliente)
+
+void salvar_cliente(CLIENTE cliente) // FUNÇÃO QUE RECEBE UMA VARIÁVEL DO TIPO CLIENTE E SALVA OS DADOS EM UM ARQUIVO TXT.
 {
     FILE *fp;
     fp = fopen("clientes.txt", "a");
@@ -68,11 +110,10 @@ void salvar_cliente(CLIENTE cliente)
     fclose(fp);
 }
 
-// FUNÇÃO PARA CADASTRAR FUNCIONÁRIOS E SALVAR OS DADOS.
-void cadastro_funcinario()
+
+void cadastro_funcinario(int opcao) // FUNÇÃO PARA CADASTRAR FUNCIONÁRIOS E SALVAR OS DADOS.
 {
     FUNCIONARIO funcionario;
-    int opcao;
 
     do
     {
@@ -104,7 +145,7 @@ void cadastro_funcinario()
         scanf("%[^\n]s", &funcionario.data_ingresso);
 
 
-        salvar_funcionario(funcionario);
+        salvar_funcionario(funcionario); // DEPOIS DE CADASTRADO OS DADOS JÁ SÃO SALVOS IMEDIATAMENTE.
 
         puts("\nDESEJA CONTINUAR? [1 - SIM/ 2 - NÃO]");
         scanf("%d", &opcao);
@@ -112,8 +153,8 @@ void cadastro_funcinario()
     }while(opcao == 1);
 }
 
-// FUNÇÃO QUE RECEBE UMA VARIÁVEL DO TIPO FUNCIONÁRIO E SALVA OS DADOS EM UM ARQUIVO TXT.
-void salvar_funcionario(FUNCIONARIO funcionario)
+
+void salvar_funcionario(FUNCIONARIO funcionario) // FUNÇÃO QUE RECEBE UMA VARIÁVEL DO TIPO FUNCIONÁRIO E SALVA OS DADOS EM UM ARQUIVO TXT.
 {
     FILE *fp;
     fp = fopen("funcionarios.txt", "a");
@@ -128,34 +169,106 @@ void salvar_funcionario(FUNCIONARIO funcionario)
     fclose(fp);
 }
 
-// MOSTRA O CADASTRO DE CLIENTES OU DE FUNCIONÁRIO DE ACORDO COM A OPÇÃO ESCOLHIDA NO MENU.
-void mostrar_cadastro(int opc)
+
+void cadastro_produto(int opcao)
+{
+    PRODUTO produto;
+    do
+    {
+        system("cls");
+        puts("-=-=-=-=-=- CADASTRO DE PRODUTOS -=-=-=-=-=-");
+        getchar();
+        puts("NOME DO PRODUTO: ");
+        scanf("%[^\n]s", &produto.nome);
+
+        getchar();
+        puts("\nCATEGORIA: ");
+        scanf("%[^\n]s", &produto.categoria);
+
+        getchar();
+        puts("\nPREÇO: R$");
+        scanf("%f", &produto.preco);
+
+        salvar_produto(produto);
+
+        puts("\nDESEJA CONTINUAR? [1 - SIM/ 2 - NÃO]");
+        scanf("%d", &opcao);
+    }while(opcao == 1);
+}
+
+
+void salvar_produto(PRODUTO produto)
+{
+    FILE *fp;
+    fp = fopen("produtos.txt", "a");
+
+    fprintf(fp, "%s, ", produto.nome);
+    fprintf(fp, "%s, ", produto.categoria);
+    fprintf(fp, "%.2f\n", produto.preco);
+
+    fclose(fp);
+}
+
+
+void exibir_clientes() // MOSTRA O CADASTRO DE CLIENTES OU DE FUNCIONÁRIO DE ACORDO COM A OPÇÃO ESCOLHIDA NO MENU.
 {
     FILE *fp;
     char linha[136];
+    int id_cliente=0;
 
-    if(opc == 2)
+    fp = fopen("clientes.txt", "r");
+
+    system("cls");
+    puts("-=-=-=-=-=- CLIENTES CADASTRADOS -=-=-=-=-=-");
+    while(fgets(linha, 136, fp) != NULL)
     {
-        fp = fopen("clientes.txt", "r");
+        printf("ID:%d \n%s", id_cliente, linha);
+        id_cliente += 1;
+        puts("-=-=-=-=-=--=-=-=-=-=--=-=-=-=-=--=-=-=-=-=--=-=-");
+    }
+    puts("\n(aperte qualquer tecla para voltar!)");
+    getchar();
+    getchar();
+}
 
-        system("cls");
-        puts("-=-=-=-=-=- CLIENTES CADASTRADOS -=-=-=-=-=-");
-        while(fgets(linha, 136, fp) != NULL)
-        {
-            printf("%s", linha);
-            puts("-=-=-=-=-=--=-=-=-=-=--=-=-=-=-=--=-=-=-=-=--=-=-");
-        }
-    }else if(opc == 4)
+
+void exibir_funcionarios()
+{
+    FILE *fp;
+    char linha[136];
+    int id_funcionario=0;
+
+    fp = fopen("funcionarios.txt", "r");
+
+    system("cls");
+    puts("-=-=-=-=-=- FUNCIONÁRIOS CADASTRADOS -=-=-=-=-=-");
+    while(fgets(linha, 136, fp) != NULL)
     {
-        fp = fopen("funcionarios.txt", "r");
+        printf("ID:%d \n%s", id_funcionario, linha);
+        id_funcionario += 1;
+        puts("-=-=-=-=-=--=-=-=-=-=--=-=-=-=-=--=-=-=-=-=--=-=-");
+    }
+    puts("\n(aperte qualquer tecla para voltar!)");
+    getchar();
+    getchar();
+}
 
-        system("cls");
-        puts("-=-=-=-=-=- FUNCIONÁRIOS CADASTRADOS -=-=-=-=-=-");
-        while(fgets(linha, 136, fp) != NULL)
-        {
-            printf("%s", linha);
-            puts("-=-=-=-=-=--=-=-=-=-=--=-=-=-=-=--=-=-=-=-=--=-=-");
-        }
+
+void exibir_produtos()
+{
+    FILE *fp;
+    char linha[50];
+    int id_produto=0;
+
+    fp = fopen("produtos.txt", "r");
+
+    system("cls");
+    puts("-=-=-=-=-=- PRODUTOS CADASTRADOS -=-=-=-=-=-");
+    while(fgets(linha, 50, fp) != NULL)
+    {
+        printf("ID:%d \n%s", id_produto, linha);
+        id_produto += 1;
+        puts("-=-=-=-=-=--=-=-=-=-=--=-=-=-=-=--=-=-=-=-=--=-=-");
     }
     puts("\n(aperte qualquer tecla para voltar!)");
     getchar();

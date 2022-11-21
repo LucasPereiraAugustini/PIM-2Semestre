@@ -1,12 +1,36 @@
 # depslib dependency file v1.0
-1668533901 source:d:\lucas\pim\main.c
+1668991436 source:d:\lucas\pim\main.c
 	<stdio.h>
 	<locale.h>
 	"modulos.h"
 
-1668218164 d:\lucas\pim\modulos.h
+1668991385 d:\lucas\pim\modulos.h
 
 1668535077 source:d:\lucas\pim\modulos.c
+	<stdio.h>
+	<locale.h>
+	"modulos.h"
+
+1668689872 source:c:\users\usuario\desktop\lucas\c\pim-2semestre-staging\pim-2semestre-staging\main.c
+	<stdio.h>
+	<locale.h>
+	"modulos.h"
+
+1668691004 c:\users\usuario\desktop\lucas\c\pim-2semestre-staging\pim-2semestre-staging\modulos.h
+
+1668690934 source:c:\users\usuario\desktop\lucas\c\pim-2semestre-staging\pim-2semestre-staging\modulos.c
+	<stdio.h>
+	<locale.h>
+	"modulos.h"
+
+1668991436 source:d:\lucas\downloads\repim\main.c
+	<stdio.h>
+	<locale.h>
+	"modulos.h"
+
+1668991385 d:\lucas\downloads\repim\modulos.h
+
+1668991791 source:d:\lucas\downloads\repim\modulos.c
 	<stdio.h>
 	<locale.h>
 	"modulos.h"
