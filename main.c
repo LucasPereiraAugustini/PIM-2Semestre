@@ -5,7 +5,7 @@
 int main()
 {
     setlocale(LC_ALL, "Portuguese");
-    int opcao;
+    int opcao, opcao2;
 
     tela_de_login();
 
@@ -24,8 +24,8 @@ int main()
                     break;
             case 4: do{
                         menu_relatorios();
-                        scanf("%d", &opcao);
-                        switch(opcao)// NESTE CASE TEMOS UM DO WHILE QUE CHAMA O MENU DE RELATÓRIOS E EXIBE O RELATÓRIO DE ACORDO COM A OPÇÃO ESCOLHIDA.
+                        scanf("%d", &opcao2);
+                        switch(opcao2)// NESTE CASE TEMOS UM DO WHILE QUE CHAMA O MENU DE RELATÓRIOS E EXIBE O RELATÓRIO DE ACORDO COM A OPÇÃO ESCOLHIDA.
                         {
                             case 1: exibir_clientes();
                                     break;
@@ -33,11 +33,13 @@ int main()
                                     break;
                             case 3: exibir_produtos();
                                     break;
-                            case 4: break;
+                            case 4: salario_anual();
+                                    break;
+                            case 5: break;
                             default: printf("OPÇÃO INVÁLIDA!");
                             Sleep(2000);
                         }
-                        }while(opcao != 4);
+                        }while(opcao2 != 5);
                         break;
             case 5: puts("SALVANDO DADOS..."); // CASE 5 SAIR DO PROGRAMA.
                     Sleep(1000);

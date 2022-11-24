@@ -17,6 +17,7 @@ typedef struct
     char cpf[15];
     char telefone[18];
     char cargo[30];
+    float salario;
     char data_ingresso[11];
 }FUNCIONARIO;
 
@@ -36,6 +37,7 @@ void cadastro_produto(int opcao);
 void salvar_cliente(CLIENTE cliente);
 void salvar_funcionario(FUNCIONARIO funcionario);
 void salvar_produto(PRODUTO produto);
+void salario_anual();
 void exibir_clientes();
 void exibir_funcionarios();
 void exibir_produtos();
