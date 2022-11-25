@@ -4,6 +4,8 @@
 
 void tela_de_login() // FUNÇÃO PARA LOGAR NO SISTEMA.
 {
+    FILE *fp;
+    fp = fopen("senhas.txt", "r");
     char login[15] = "admin", senha[16] = "admin", login1[15], senha1[16];
     int login_efetuado = 0;
 
@@ -101,11 +103,7 @@ void salvar_cliente(CLIENTE cliente) // FUNÇÃO QUE RECEBE UMA VARIÁVEL DO TIPO C
     FILE *fp;
     fp = fopen("clientes.txt", "a");
 
-    fprintf(fp, "%s, ", cliente.nome);
-    fprintf(fp, "%s, ", cliente.nascimento);
-    fprintf(fp, "%s, ", cliente.cpf);
-    fprintf(fp, "%s, ", cliente.telefone);
-    fprintf(fp, "%s\n", cliente.cidade);
+    fprintf(fp, "%s, %s, %s, %s, %s\n", cliente.nome, cliente.nascimento, cliente.cpf, cliente.telefone, cliente.cidade);
     fclose(fp);
 }
 
@@ -159,18 +157,12 @@ void salvar_funcionario(FUNCIONARIO funcionario) // FUNÇÃO QUE RECEBE UMA VARIÁV
     FILE *fp;
     fp = fopen("funcionarios.txt", "a");
 
-    fprintf(fp, "%s, ", funcionario.nome);
-    fprintf(fp, "%s, ", funcionario.nascimento);
-    fprintf(fp, "%s, ", funcionario.cpf);
-    fprintf(fp, "%s, ", funcionario.telefone);
-    fprintf(fp, "%s, ", funcionario.cargo);
-    fprintf(fp, "%s\n", funcionario.data_ingresso);
+    fprintf(fp, "%s, %s, %s, %s, %s, %s\n", funcionario.nome, funcionario.nascimento, funcionario.cpf, funcionario.telefone, funcionario.cargo, funcionario.data_ingresso);
     fclose(fp);
 
     // SALVANDO O NOME E SALÁRIO DO FUNCIONÁRIO CADASTRADO EM UM ARQUIVO SEPARADO PARA QUE POSSA SER CALCULADO O SALÁRIO ANUAL POSTERIORMENTE.
     fp = fopen("salarios.txt", "a");
-    fprintf(fp, "%s ", funcionario.nome);
-    fprintf(fp, "%.2f\n", funcionario.salario);
+    fprintf(fp, "%s %.2f\n", funcionario.nome, funcionario.salario);
     fclose(fp);
 }
 
@@ -184,10 +176,10 @@ void salario_anual() // CALCULA E EXIBE O SALÁRIO ANUAL DE TODOS OS FUNCINÁRIOS 
 
     system("cls");
     puts("-=-=-=-=-=- SALÁRIO ANUAL DE FUNCIONÁRIOS -=-=-=-=-=-");
-    while(feof(fp))
+    while(!feof(fp))
     {
         fscanf(fp, "%s%f", &nome, &anual);
-        printf("O salário anual de %s é de R$ %.2f\n", nome, anual*12);
+        printf("\nO salário anual de %s é de R$ %.2f\n", nome, anual*12);
         puts("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
     }
     fclose(fp);
@@ -229,9 +221,7 @@ void salvar_produto(PRODUTO produto) // FUNÇÃO QUE RECEBE UMA VARIÁVEL DO TIPO P
     FILE *fp;
     fp = fopen("produtos.txt", "a");
 
-    fprintf(fp, "%s, ", produto.nome);
-    fprintf(fp, "%s, ", produto.categoria);
-    fprintf(fp, "%.2f\n", produto.preco);
+    fprintf(fp, "%s, %s, %.2f\n", produto.nome, produto.categoria, produto.preco);
     fclose(fp);
 }
 

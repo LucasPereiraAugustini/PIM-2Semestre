@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1668991436 source:d:\lucas\pim\main.c
+1669408478 source:d:\lucas\pim\main.c
 	<stdio.h>
 	<locale.h>
 	"modulos.h"
 
-1668991385 d:\lucas\pim\modulos.h
+1669295032 d:\lucas\pim\modulos.h
 
-1668535077 source:d:\lucas\pim\modulos.c
+1669325833 source:d:\lucas\pim\modulos.c
 	<stdio.h>
 	<locale.h>
 	"modulos.h"

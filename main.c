@@ -7,7 +7,7 @@ int main()
     setlocale(LC_ALL, "Portuguese");
     int opcao, opcao2;
 
-    tela_de_login();
+    //tela_de_login();
 
     do
     {
@@ -27,15 +27,15 @@ int main()
                         scanf("%d", &opcao2);
                         switch(opcao2)// NESTE CASE TEMOS UM DO WHILE QUE CHAMA O MENU DE RELATÓRIOS E EXIBE O RELATÓRIO DE ACORDO COM A OPÇÃO ESCOLHIDA.
                         {
-                            case 1: exibir_clientes();
+                            case 1: exibir_clientes(); // CASE 1 CHAMA A FUNÇÃO PARA EXIBIR OS CLIENTES.
                                     break;
-                            case 2: exibir_funcionarios();
+                            case 2: exibir_funcionarios(); // CASE 2 CHAMA A FUNÇÃO PARA EXIBIR OS FUNCIONÁRIOS.
                                     break;
-                            case 3: exibir_produtos();
+                            case 3: exibir_produtos(); // CASE 3 CHAMA A FUNÇÃO PARA EXIBIR OS PRODUTOS.
                                     break;
-                            case 4: salario_anual();
+                            case 4: salario_anual(); // CASE 4 CHAMA A FUNÇÃO PARA EXIBIR O SALÁRIO ANUAL DE FUNCIONÁRIOS.
                                     break;
-                            case 5: break;
+                            case 5: break; // CASE 5 VOLTA PARA A TELA INICIAL.
                             default: printf("OPÇÃO INVÁLIDA!");
                             Sleep(2000);
                         }
