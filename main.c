@@ -7,7 +7,7 @@ int main()
     setlocale(LC_ALL, "Portuguese");
     int opcao, opcao2;
 
-    //tela_de_login();
+    tela_de_login();
 
     do
     {
@@ -16,27 +16,27 @@ int main()
 
         switch(opcao)
         {
-            case 1: cadastro_cliente(opcao); // CASE 1 CHAMA A FUN«√O PARA CADASTRAR OS CLIENTES.
+            case 1: cadastro_cliente(opcao); // CASE 1 CHAMA A FUN√á√ÉO PARA CADASTRAR OS CLIENTES.
                     break;
-            case 2: cadastro_funcinario(opcao); // CASE 2 CHAMA A FUN«√O PARA CADASTRAR OS FUNCION¡RIOS.
+            case 2: cadastro_funcinario(opcao); // CASE 2 CHAMA A FUN√á√ÉO PARA CADASTRAR OS FUNCION√ÅRIOS.
                     break;
-            case 3: cadastro_produto(opcao); // CASE 3 CHAMA A FUN«√O PARA CADASTRAR OS PRODUTOS.
+            case 3: cadastro_produto(opcao); // CASE 3 CHAMA A FUN√á√ÉO PARA CADASTRAR OS PRODUTOS.
                     break;
             case 4: do{
                         menu_relatorios();
                         scanf("%d", &opcao2);
-                        switch(opcao2)// NESTE CASE TEMOS UM DO WHILE QUE CHAMA O MENU DE RELAT”RIOS E EXIBE O RELAT”RIO DE ACORDO COM A OP«√O ESCOLHIDA.
+                        switch(opcao2)// NESTE CASE TEMOS UM DO WHILE QUE CHAMA O MENU DE RELAT√ìRIOS E EXIBE O RELAT√ìRIO DE ACORDO COM A OP√á√ÉO ESCOLHIDA.
                         {
-                            case 1: exibir_clientes(); // CASE 1 CHAMA A FUN«√O PARA EXIBIR OS CLIENTES.
+                            case 1: exibir_clientes(); // CASE 1 CHAMA A FUN√á√ÉO PARA EXIBIR OS CLIENTES.
                                     break;
-                            case 2: exibir_funcionarios(); // CASE 2 CHAMA A FUN«√O PARA EXIBIR OS FUNCION¡RIOS.
+                            case 2: exibir_funcionarios(); // CASE 2 CHAMA A FUN√á√ÉO PARA EXIBIR OS FUNCION√ÅRIOS.
                                     break;
-                            case 3: exibir_produtos(); // CASE 3 CHAMA A FUN«√O PARA EXIBIR OS PRODUTOS.
+                            case 3: exibir_produtos(); // CASE 3 CHAMA A FUN√á√ÉO PARA EXIBIR OS PRODUTOS.
                                     break;
-                            case 4: salario_anual(); // CASE 4 CHAMA A FUN«√O PARA EXIBIR O SAL¡RIO ANUAL DE FUNCION¡RIOS.
+                            case 4: salario_anual(); // CASE 4 CHAMA A FUN√á√ÉO PARA EXIBIR O SAL√ÅRIO ANUAL DE FUNCION√ÅRIOS.
                                     break;
                             case 5: break; // CASE 5 VOLTA PARA A TELA INICIAL.
-                            default: printf("OP«√O INV¡LIDA!");
+                            default: printf("OP√á√ÉO INV√ÅLIDA!");
                             Sleep(2000);
                         }
                         }while(opcao2 != 5);
@@ -44,7 +44,7 @@ int main()
             case 5: puts("SALVANDO DADOS..."); // CASE 5 SAIR DO PROGRAMA.
                     Sleep(1000);
                     break;
-            default: printf("OP«√O INV¡LIDA!");
+            default: printf("OP√á√ÉO INV√ÅLIDA!");
             Sleep(2000);
         }
     }while(opcao != 5);
